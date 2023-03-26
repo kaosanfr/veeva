@@ -15,8 +15,11 @@
  */
 package com.greglturnquist.payroll;
 
+import com.sandra.entity.Color;
+import com.sandra.entity.Location;
+import com.sandra.entity.SiteStatus;
 import com.sandra.entity.User;
-import com.sandra.repository.UserRepository;
+import com.sandra.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -33,12 +36,44 @@ import org.springframework.stereotype.Component;
 public class DatabaseLoader implements CommandLineRunner { // <2>
 	@Autowired
 	private final UserRepository userRepository;
+	@Autowired
+	private final ColorRepository colorRepository;
 
-	// <3>
+	@Autowired
+	private final LocationRepository locationRepository;
+
+	@Autowired
+	private final SiteRepository siteRepository;
+
+	@Autowired
+	private final SiteStatusRepository siteStatusRepository;
+
+	@Autowired
+	private final StudyCountryRepository studyCountryRepository;
+
+	@Autowired
+	private final StudyRepository studyRepository;
 
 	@Override
 	public void run(String... strings) throws Exception { // <4>
 		this.userRepository.save(User.builder().email("my-wonderdrugs@email.com").password("@123#").build());
+		// colors
+/*		this.colorRepository.save(Color.builder().name("#0000FF").build());
+		this.colorRepository.save(Color.builder().name("#FF7F50").build());
+		this.colorRepository.save(Color.builder().name("#9932CC").build());
+
+		// Locations
+		this.locationRepository.save(Location.builder().name("France").build());
+		this.locationRepository.save(Location.builder().name("Colombia").build());
+		this.locationRepository.save(Location.builder().name("Japan").build());
+
+		// Site Status
+		this.siteStatusRepository.save(SiteStatus.builder().statusName("Status1").colorName(Color.builder().name("#0000FF").build()).build());
+		this.siteStatusRepository.save(SiteStatus.builder().statusName("Status2").colorName(Color.builder().name("#FF7F50").build()).build());
+		this.siteStatusRepository.save(SiteStatus.builder().statusName("Status3").colorName(Color.builder().name("#9932CC").build()).build());
+
+		// Site
+*/
 	}
 }
 // end::code[]
