@@ -21,5 +21,7 @@ public class Location implements Serializable {
     @Id
     private String locationName;
 
+    private String countryIso2;
+
 
 }

@@ -13,26 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.greglturnquist.payroll;
+package com.sandra.dummy;
 
-import com.sandra.entity.Color;
-import com.sandra.entity.Location;
-import com.sandra.entity.SiteStatus;
 import com.sandra.entity.User;
 import com.sandra.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
-/**
- * @author Greg Turnquist
- */
-// tag::code[]
+
 @Component // <1>
 @AllArgsConstructor
-@ComponentScan({  "com.sandra"})
 public class DatabaseLoader implements CommandLineRunner { // <2>
 	@Autowired
 	private final UserRepository userRepository;
@@ -56,24 +48,35 @@ public class DatabaseLoader implements CommandLineRunner { // <2>
 
 	@Override
 	public void run(String... strings) throws Exception { // <4>
-		this.userRepository.save(User.builder().email("my-wonderdrugs@email.com").password("@123#").build());
+		//this.userRepository.save(User.builder().email("my-wonderdrugs@email.com").password("@123#").build());
+		this.userRepository.save(User.builder().email("totos@email.com").password("123").build());
 		// colors
-/*		this.colorRepository.save(Color.builder().name("#0000FF").build());
-		this.colorRepository.save(Color.builder().name("#FF7F50").build());
-		this.colorRepository.save(Color.builder().name("#9932CC").build());
 
-		// Locations
-		this.locationRepository.save(Location.builder().name("France").build());
-		this.locationRepository.save(Location.builder().name("Colombia").build());
-		this.locationRepository.save(Location.builder().name("Japan").build());
+		DummyData.colors.forEach( color ->
+				this.colorRepository.save(color)
+		);
 
-		// Site Status
-		this.siteStatusRepository.save(SiteStatus.builder().statusName("Status1").colorName(Color.builder().name("#0000FF").build()).build());
-		this.siteStatusRepository.save(SiteStatus.builder().statusName("Status2").colorName(Color.builder().name("#FF7F50").build()).build());
-		this.siteStatusRepository.save(SiteStatus.builder().statusName("Status3").colorName(Color.builder().name("#9932CC").build()).build());
+		DummyData.locations.forEach( color ->
+				this.locationRepository.save(color)
+		);
 
-		// Site
-*/
+		DummyData.siteStatuses.forEach( color ->
+				this.siteStatusRepository.save(color)
+		);
+
+		DummyData.sites.forEach(color ->
+				this.siteRepository.save(color)
+		);
+
+		DummyData.studyCountries.forEach( color ->
+				this.studyCountryRepository.save(color)
+		);
+
+		DummyData.studyList.forEach( color ->
+				this.studyRepository.save(color)
+		);
+
+
 	}
 }
 // end::code[]

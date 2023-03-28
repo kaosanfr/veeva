@@ -21,7 +21,7 @@ public class Study implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "siteName", nullable = false)
-    private Site site;
+    private SiteStatus siteStatus;
 
     @ManyToOne
     @JoinColumn(name = "name", nullable = false)

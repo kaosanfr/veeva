@@ -28,10 +28,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 
-/**
- * @author Greg Turnquist
- */
-// tag::code[]
 @Controller // <1>
 @RequiredArgsConstructor
 public class ApplicationController {

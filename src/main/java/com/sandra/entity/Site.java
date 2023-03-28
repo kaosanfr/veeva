@@ -19,10 +19,6 @@ public class Site implements Serializable {
     private String siteName;
 
     @ManyToOne
-    @JoinColumn(name = "color", nullable = false)
-    private Color colorName;
-
-    @ManyToOne
     @JoinColumn(name = "locationName", nullable = false)
     private Location location;
 
