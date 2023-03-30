@@ -56,7 +56,7 @@ private final HttpServletResponse httpResponse;
 		model.addAttribute("loginDto", loginDto);
 
 		if(!result.hasErrors()){
-			httpResponse.sendRedirect("http://localhost:8080");
+			httpResponse.sendRedirect("http://127:8080");
 			return "map";
 		}
 		else {

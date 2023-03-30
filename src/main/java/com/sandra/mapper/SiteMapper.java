@@ -1,7 +1,9 @@
 package com.sandra.mapper;
 
 import com.sandra.dto.SiteDto;
+import com.sandra.dto.StudyCountryDto;
 import com.sandra.entity.Site;
+import com.sandra.entity.StudyCountry;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
@@ -17,4 +19,7 @@ public interface SiteMapper {
     @Mapping(target = "colorName", source = "site.siteStatus.colorName.color" )
     @Mapping(target = "statusName", source = "site.siteStatus.statusName" )
     SiteDto toSiteDto(Site site);
+
+    @Mapping(target = "countryName", source = "name" )
+    StudyCountryDto toStudyCountryDto(StudyCountry site);
 }
