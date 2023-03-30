@@ -26,12 +26,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.net.http.HttpResponse;
 
 @Controller // <1>
 @RequiredArgsConstructor
 public class ApplicationController {
-
+private final HttpServletResponse httpResponse;
 	private final UserService userService;
 
 	@GetMapping(value = "/")
@@ -47,13 +50,14 @@ public class ApplicationController {
 	}
 
 	@PostMapping (value = "/index") // <2>
-	public String checkLoginData(@Valid @ModelAttribute("loginDto") LoginDto loginDto, BindingResult result, Model model) {
+	public String checkLoginData(@Valid @ModelAttribute("loginDto") LoginDto loginDto, BindingResult result, Model model) throws IOException {
 
 		ValidateInput.checkInputData(loginDto, result, userService);
 		model.addAttribute("loginDto", loginDto);
 
 		if(!result.hasErrors()){
-			return "map"; // <3>
+			httpResponse.sendRedirect("http://localhost:8080");
+			return "map";
 		}
 		else {
 			return "index";
